@@ -31,7 +31,15 @@ if (!process.env.DATABASE_URL) {
   throw new Error('DATABASE_URL is required. See Database/.env.example for an example.');
 }
 
-const db = new Pool({ connectionString: process.env.DATABASE_URL });
+const ssl =
+  process.env.NODE_ENV === 'production' || process.env.DATABASE_URL?.includes('render.com')
+    ? { rejectUnauthorized: false }
+    : false;
+
+const db = new Pool({
+  connectionString: process.env.DATABASE_URL,
+  ...(ssl ? { ssl } : {}),
+});
 
 async function initializeDatabase() {
   await db.query(`

@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "start": "node --env-file-if-exists=Database/.env Database/app.js",
+    "start": "node Database/app.js",
     "server": "node --env-file-if-exists=Database/.env Database/app.js",
     "build": "vite build",
     "check:lessons": "node scripts/check-lessons.mjs",
