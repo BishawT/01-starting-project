@@ -1,0 +1,8 @@
+Database: auth_app
+Schema: public
+Table: users
+
+
+
+
+Schemas → public → Tables → users
